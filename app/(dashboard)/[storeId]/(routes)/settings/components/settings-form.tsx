@@ -90,3 +90,4 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
     </>
   )
 }
+// - MySQL + Prisma +  MySQL Local Development Setup
