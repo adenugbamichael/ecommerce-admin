@@ -24,10 +24,7 @@ import {
 import { Input } from "@/components/ui/input"
 import { AlertModal } from "@/components/modals/alert-modal"
 import { ApiAlert } from "@/components/ui/api-alert"
-
-interface SettingsFormProps {
-  initialData: Store
-}
+import { useOrigin } from "@/hooks/use-origin"
 
 const formSchema = z.object({
   name: z.string().min(1),
@@ -35,9 +32,14 @@ const formSchema = z.object({
 
 type SettingsFormValues = z.infer<typeof formSchema>
 
+interface SettingsFormProps {
+  initialData: Store
+}
+
 export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
   const params = useParams()
   const router = useRouter()
+  const origin = useOrigin()
 
   const [open, setOpen] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -126,7 +128,11 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
         </form>
       </Form>
       <Separator />
-      <ApiAlert title='test' description='test-desc' />
+      <ApiAlert
+        title='NEXT_PUBLIC_API_URL'
+        variant='public'
+        description={`${origin}/api/${params.storeId}`}
+      />
     </>
   )
 }

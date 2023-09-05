@@ -64,7 +64,7 @@ FRONTEND_STORE_URL=http://localhost:3001
 STRIPE_WEBHOOK_SECRET=
 ```
 
-### Connect to PlanetScale and Push Prisma
+### Connect to PlanetScale or MYSQL Local server and Push Prisma
 
 ```shell
 npx prisma generate
