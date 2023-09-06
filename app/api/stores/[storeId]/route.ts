@@ -1,5 +1,5 @@
-import { auth } from "@clerk/nextjs"
 import { NextResponse } from "next/server"
+import { auth } from "@clerk/nextjs"
 
 import prismadb from "@/lib/prismadb"
 
@@ -14,7 +14,7 @@ export async function PATCH(
     const { name } = body
 
     if (!userId) {
-      return new NextResponse("Unauthenticated", { status: 401 })
+      return new NextResponse("Unauthenticated", { status: 403 })
     }
 
     if (!name) {
@@ -50,7 +50,7 @@ export async function DELETE(
     const { userId } = auth()
 
     if (!userId) {
-      return new NextResponse("Unauthenticated", { status: 401 })
+      return new NextResponse("Unauthenticated", { status: 403 })
     }
 
     if (!params.storeId) {
