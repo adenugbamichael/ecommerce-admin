@@ -22,7 +22,7 @@ Key Features:
 - Order creation
 - Stripe checkout
 - Stripe webhooks
-- MySQL + Prisma + PlanetScale(optional) + MYSQL Local Development Setup(optional)
+- MySQL + Prisma + PlanetScale(optional) or MYSQL Local Development Setup(optional)
 
 ### Prerequisites
 
