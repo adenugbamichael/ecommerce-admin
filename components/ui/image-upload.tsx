@@ -1,15 +1,15 @@
 "use client"
 
-import Image from "next/image"
-import { useEffect, useState } from "react"
 import { CldUploadWidget } from "next-cloudinary"
-import { ImagePlus, Trash } from "lucide-react"
+import { useEffect, useState } from "react"
 
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
+import { ImagePlus, Trash } from "lucide-react"
 
 interface ImageUploadProps {
   disabled?: boolean
-  onChange: (vlaue: string) => void
+  onChange: (value: string) => void
   onRemove: (value: string) => void
   value: string[]
 }
@@ -21,6 +21,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   value,
 }) => {
   const [isMounted, setIsMounted] = useState(false)
+
   useEffect(() => {
     setIsMounted(true)
   }, [])
@@ -44,21 +45,14 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
             <div className='z-10 absolute top-2 right-2'>
               <Button
                 type='button'
-                variant='destructive'
-                size='icon'
                 onClick={() => onRemove(url)}
+                variant='destructive'
+                size='sm'
               >
                 <Trash className='h-4 w-4' />
               </Button>
             </div>
-            <Image
-              priority
-              fill
-              className='object-cover'
-              alt='Image'
-              src={url}
-              sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
-            />
+            <Image fill className='object-cover' alt='Image' src={url} />
           </div>
         ))}
       </div>
@@ -67,6 +61,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
           const onClick = () => {
             open()
           }
+
           return (
             <Button
               type='button'
